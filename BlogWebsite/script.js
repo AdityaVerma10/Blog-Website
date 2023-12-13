@@ -1,25 +1,40 @@
-const colorthemelogo =document.querySelector(".colorthemelogo");
+const colorthemelogo =document.querySelector("#colorthemelogo");
 const body =document.querySelector("body");
-const ancer =document.querySelector("a");
+
 let indx =0;
 
-document.getElementsByClassName('.colorthemelogo').onmouseover=()=>{
-    console.log('hi')
-}
+const colorthemebox =document.querySelector('.colortheme');
 
 
 colorthemelogo.onclick =()=>{
     if(indx%2==0){
         body.style.backgroundColor='black'
         body.style.color='white'
-        // colorthemelogo.style.height='30px';
+        colormodebox.innerText  ='switch to light mode';
         colorthemelogo.src ='lightlogo.png';
     }
     else{
         colorthemelogo.src ='moon1.png';
         body.style.backgroundColor='white'
+        colormodebox.innerText  ='switch to dark mode';
         body.style.color='black'
-        // colorthemelogo.style.height='30px';
     }
     indx++;
+}
+
+let colormodebox =document.createElement('button');
+colormodebox.innerText='';
+
+colorthemelogo.onmouseover=()=>{
+    if(indx%2==0){
+        colormodebox.innerText  ='switch to dark mode';
+    }
+    else
+    colormodebox.innerText  ='switch to light mode';
+
+    colorthemebox.append(colormodebox);
+}
+
+colorthemelogo.onmouseout=()=>{
+    colormodebox.remove();
 }
